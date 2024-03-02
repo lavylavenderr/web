@@ -1,8 +1,17 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import "../styles/globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from "next";
+import font from "next/font/local";
+import { Toaster } from "react-hot-toast";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+
+config.autoAddCss = false;
+
+const primary = font({
+  src: "../fonts/roobert-variable.woff2",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="bg-grid-neutral-200/40 bg-neutral-100 text-neutral-900 antialiased dark:bg-grid-neutral-800/50 dark:bg-neutral-900 dark:text-neutral-100 min-h-full">
+        <div className={primary.className}>
+          <div>{children}</div>
+          <Toaster />
+        </div>
+      </body>
     </html>
   );
 }
