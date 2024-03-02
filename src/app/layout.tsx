@@ -4,11 +4,6 @@ import type { Metadata } from "next";
 import font from "next/font/local";
 import { Toaster } from "react-hot-toast";
 
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
-
-config.autoAddCss = false;
-
 const primary = font({
   src: "../fonts/roobert-variable.woff2",
 });
