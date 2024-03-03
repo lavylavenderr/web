@@ -158,17 +158,7 @@ export default function Home() {
             <SiRust size={24} />
           </div>
         </div>
-        <Link
-          href="https://github.com/lavylavenderr"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex hover:scale-95 hover:rotate-2 transition-all h-full items-center justify-center rounded-2xl text-4xl bg-purple-400/20 backdrop-blur-2xl text-white col-span-2"
-        >
-          <span className="sr-only">GitHub</span>
-          <span className="transform-gpu text-2xl transition duration-500 group-hover:scale-[1.3]">
-            <SiGithub size={62} />
-          </span>
-        </Link>
+
         <div className="h-auto col-span-6 space-y-2 rounded-2xl bg-purple-900/20 p-6 backdrop-blur-2xl md:col-span-4">
           <h2 className="font-semibold text-glow-white">About Me 🦊</h2>
 
@@ -181,7 +171,18 @@ export default function Home() {
             friend group.
           </p>
         </div>
-
+        <div className="col-span-6 h-full hover:rotate-2 transition-all dark:shadow-none dark:backdrop-blur-2xl md:col-span-2 rounded-2xl">
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 -z-20"
+          >
+            <img
+              src={"/twotime.png"}
+              alt="Meme"
+              className="absolute inset-0 h-full w-full object-cover object-center  rounded-2xl"
+            />
+          </span>
+        </div>
         <div className="col-span-6 border-gray-500 bg-gray-500/20 backdrop-blur-2xl rounded-2xl space-y-1 p-6">
           <h1 className="font-semibold text-glow-white">
             all my projects - present and past
