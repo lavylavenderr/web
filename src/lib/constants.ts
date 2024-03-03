@@ -1,3 +1,5 @@
+import { differenceInDays } from "date-fns";
+
 export const discordId = "988801425196867644";
 export const spotifyProfileLink =
   "https://open.spotify.com/user/31fucuyc76nn7m677bpz3aqw5q3u?si=92d0815c7dcb4e86";
@@ -21,14 +23,20 @@ export const hasHadBirthdayThisYear =
 
 export const nextBirthdayYear =
   new Date().getFullYear() + (hasHadBirthdayThisYear ? 1 : 0);
-export const daysUntilBirthday = RelativeTimeFormatter.formatToParts(
-  Math.floor(
-    (new Date(nextBirthdayYear, dob.getMonth(), dob.getDay() + 1).getTime() -
-      Date.now()) /
-      1000 /
-      60 /
-      60 /
-      24
-  ),
-  "day"
-)[1]!.value.toString();
+export const daysUntilBirthday = (
+  dob: Date,
+  nextBirthdayYear: number
+): number => {
+  const nextBirthday = new Date(
+    nextBirthdayYear,
+    dob.getMonth(),
+    dob.getDate() + 1
+  );
+  const currentDate = new Date();
+
+  if (currentDate > nextBirthday) {
+    nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+  }
+
+  return differenceInDays(nextBirthday, currentDate);
+};

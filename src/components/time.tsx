@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { CaliforniaTimeFormatter, daysUntilBirthday } from "@/lib/constants";
+import { CaliforniaTimeFormatter, daysUntilBirthday, dob } from "@/lib/constants";
 
 function Night({ time }: { time: Date }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -130,7 +130,7 @@ function Day({ time }: { time: Date }) {
 
 export function Time() {
   const [time, setTime] = useState(() => new Date());
-
+  const dayCount = daysUntilBirthday(dob, new Date().getFullYear())
   const isNight = time.getHours() >= 17 || time.getHours() < 6;
 
   useEffect(() => {
@@ -148,7 +148,7 @@ export function Time() {
       <div className="flex items-center  justify-center rounded-2xl bg-indigo-100 text-indigo-500 dark:bg-[#23224c] dark:text-indigo-400 p-3 md:p-0">
         <div className="text-center">
           <p className="text-xs">
-            <span className="text-xl">{daysUntilBirthday}</span> days
+            <span className="text-xl">{dayCount}</span> days
             <br />
             until birthday
           </p>
