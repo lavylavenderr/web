@@ -1,4 +1,4 @@
-import { differenceInDays } from "date-fns";
+import { differenceInDays, addYears, differenceInYears } from "date-fns";
 
 export const discordId = "988801425196867644";
 export const spotifyProfileLink =
@@ -15,28 +15,24 @@ export const RelativeTimeFormatter = new Intl.RelativeTimeFormat("en", {
   style: "long",
 });
 
-export const dob = new Date("05-07-2004");
-export const age = new Date(Date.now() - dob.getTime()).getUTCFullYear() - 1970;
+export const dob = new Date("2004-05-07");
+export const age = differenceInYears(new Date(), dob);
 export const hasHadBirthdayThisYear =
   new Date().getMonth() >= dob.getMonth() &&
   new Date().getDate() >= dob.getDate();
 
 export const nextBirthdayYear =
   new Date().getFullYear() + (hasHadBirthdayThisYear ? 1 : 0);
-export const daysUntilBirthday = (
-  dob: Date,
-  nextBirthdayYear: number
-): number => {
-  const nextBirthday = new Date(
-    nextBirthdayYear,
-    dob.getMonth(),
-    dob.getDate() + 1
-  );
+
+export const daysUntilBirthday = (): number => {
   const currentDate = new Date();
-
-  if (currentDate > nextBirthday) {
-    nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+  let nextBirthday = new Date(
+    currentDate.getFullYear(),
+    dob.getMonth(),
+    dob.getDate()
+  );
+  if (nextBirthday < currentDate) {
+    nextBirthday = addYears(nextBirthday, 1);
   }
-
   return differenceInDays(nextBirthday, currentDate);
 };

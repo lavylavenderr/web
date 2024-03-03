@@ -38,7 +38,7 @@ function Night({ time }: { time: Date }) {
   return (
     <div
       className={clsx(
-        "relative flex items-center justify-center overflow-hidden rounded-2xl text-center",
+        "relative flex h-24 md:h-auto items-center justify-center overflow-hidden rounded-2xl text-center",
         "bg-sky-900 text-white"
       )}
     >
@@ -73,7 +73,7 @@ function Night({ time }: { time: Date }) {
 
 function Day({ time }: { time: Date }) {
   return (
-    <div className="relative flex overflow-hidden rounded-2xl bg-gradient-to-br from-[#0A8DFF] to-[#98CFFF] first-letter:w-full text-center">
+    <div className="relative h-24 md:h-auto flex overflow-hidden rounded-2xl bg-gradient-to-br from-[#0A8DFF] to-[#98CFFF] first-letter:w-full text-center">
       <div className="flex w-full items-center justify-center">
         <div className="opacity-85 flex items-baseline space-x-1 md:space-x-2">
           <div className="flex flex-col">
@@ -130,7 +130,7 @@ function Day({ time }: { time: Date }) {
 
 export function Time() {
   const [time, setTime] = useState(() => new Date());
-  const dayCount = daysUntilBirthday(dob, new Date().getFullYear())
+  const dayCount = daysUntilBirthday()
   const isNight = time.getHours() >= 17 || time.getHours() < 6;
 
   useEffect(() => {
@@ -145,7 +145,7 @@ export function Time() {
     <div className="col-span-6 grid shrink-0 grid-cols-2 md:grid-cols-1 gap-6 md:col-span-1 [&_>_div]:shrink-0">
       {isNight ? <Night time={time} /> : <Day time={time} />}
 
-      <div className="flex items-center  justify-center rounded-2xl bg-indigo-100 text-indigo-500 dark:bg-[#23224c] dark:text-indigo-400 p-3 md:p-0">
+      <div className="flex items-center h-24 md:h-auto justify-center rounded-2xl bg-indigo-100 text-indigo-500 dark:bg-[#23224c] dark:text-indigo-400 p-3 md:p-0">
         <div className="text-center">
           <p className="text-xs">
             <span className="text-xl">{dayCount}</span> days

@@ -23,6 +23,7 @@ const config: Config = {
     },
   },
   plugins: [
+    require("@tailwindcss/forms"),
     {
       handler: (tw) => {
         tw.matchComponents(

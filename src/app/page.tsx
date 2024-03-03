@@ -21,13 +21,13 @@ import {
   SiRust,
   SiSpotify,
   SiUbuntu,
-  SiUnsplash,
   SiVuedotjs,
 } from "react-icons/si";
 import { discordId, spotifyProfileLink } from "@/lib/constants";
 import { useLanyard } from "react-use-lanyard";
 import { FiArrowUpRight } from "react-icons/fi";
 import { FaGlobe } from "react-icons/fa";
+import { ContactForm } from "@/components/contactform";
 
 export default function Home() {
   const lanyard = useLanyard({ userId: discordId, socket: true });
@@ -36,7 +36,7 @@ export default function Home() {
     <div className="space-y-6">
       <div className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pt-16 select-none">
         <div className="col-span-6 flex h-56 md:h-48 flex-col justify-between overflow-hidden rounded-2xl p-4 md:px-8 md:py-5 bg-purple-200 dark:border-purple-500 dark:bg-purple-500/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-6">
-          <div className="space-y-1 p-2">
+          <div className="space-y-1 ml-2 md:ml-0 md:p-2">
             <h1 className="text-lg font-semibold tracking-wide text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50">
               Hi there! My name is
             </h1>
@@ -55,14 +55,14 @@ export default function Home() {
           className={cn(
             "col-span-6 h-52 dark:shadow-none hover:rotate-2 dark:backdrop-blur-2xl md:col-span-2 rounded-2xl hover:scale-95 transition-all",
             {
-              online: "text-glow-white bg-green-600",
+              online: "md:text-glow-white bg-green-600",
               idle: "bg-orange-400 text-glow-orange-50",
               dnd: "bg-red-500 text-glow-red-100 dark:bg-red-600",
               offline: "bg-blurple text-white/90",
             }[lanyard.status?.discord_status ?? "offline"]
           )}
         >
-          <div className="h-full space-y-2 mt-10">
+          <div className="h-full space-y-2 mt-9 md:-rotate-6">
             <SiDiscord className="flex mx-auto w-24 h-24" />
             <h1 className="text-white text-lg font-semibold text-center">
               @lavylavender
@@ -97,7 +97,7 @@ export default function Home() {
 
           <SiSpotify className="aboslute text-3xl mt-5 ml-5" />
 
-          <span className="absolute bottom-5 left-5 text-glow-white">
+          <span className="absolute bottom-5 left-5 md:text-glow-white">
             <h1 className="font-medium">Listening to:</h1>
             <h2 className="font-semibold text-lg">
               {lanyard.status?.listening_to_spotify
@@ -128,12 +128,12 @@ export default function Home() {
           </span>
           <FaGlobe className="aboslute text-white text-3xl mt-5 ml-5" />
 
-          <span className="absolute bottom-5 left-5 text-glow-white">
+          <span className="absolute bottom-5 left-5 md:text-glow-white">
             <div className="flex">
               <h1 className="font-semibold text-lg">
                 Check out my photography portfolio!
               </h1>{" "}
-              <FiArrowUpRight className="mt-[6px]" size={18} />
+              <FiArrowUpRight className="mt-[6px] hidden md:block" size={18} />
             </div>
           </span>
         </Link>
@@ -158,19 +158,6 @@ export default function Home() {
             <SiRust size={24} />
           </div>
         </div>
-
-        <div className="h-auto col-span-6 space-y-2 rounded-2xl bg-purple-900/20 p-6 backdrop-blur-2xl md:col-span-4">
-          <h2 className="font-semibold text-glow-white">About Me 🦊</h2>
-
-          <p>
-            I'm a relatively simple person, I got into coding around the age of
-            14! My first ever Discord.JS bot, yikes that was a disaster. A few
-            fun facts about me is and I also love to read (I'm currently reading
-            Warrior Cats!), shoot photos and I write stories from time to time!
-            Besides that, you can usually catch me hanging around my usual
-            friend group.
-          </p>
-        </div>
         <div className="col-span-6 h-full hover:rotate-2 transition-all dark:shadow-none dark:backdrop-blur-2xl md:col-span-2 rounded-2xl">
           <span
             aria-hidden
@@ -183,8 +170,21 @@ export default function Home() {
             />
           </span>
         </div>
+
+        <div className="h-auto col-span-6 space-y-2 rounded-2xl bg-purple-900/20 p-6 backdrop-blur-2xl md:col-span-4">
+          <h2 className="font-semibold md:text-glow-white">About Me 🦊</h2>
+
+          <p>
+            I'm a relatively simple person, I got into coding around the age of
+            14! My first ever Discord.JS bot, yikes that was a disaster. A few
+            fun facts about me is and I also love to read (I'm currently reading
+            Warrior Cats!), shoot photos and I write stories from time to time!
+            Besides that, you can usually catch me hanging around my usual
+            friend group.
+          </p>
+        </div>
         <div className="col-span-6 border-gray-500 bg-gray-500/20 backdrop-blur-2xl rounded-2xl space-y-1 p-6">
-          <h1 className="font-semibold text-glow-white">
+          <h1 className="font-semibold md:text-glow-white">
             all my projects - present and past
           </h1>
           <div className="space-y-2 pt-2">
@@ -221,6 +221,9 @@ export default function Home() {
               </p>
             </Link>
           </div>
+        </div>
+        <div className="col-span-6 space-y-4 rounded-2xl p-6 bg-purple-400/20 backdrop-blur-2xl text-white md:col-span-6">
+          <ContactForm />
         </div>
       </div>
     </div>
