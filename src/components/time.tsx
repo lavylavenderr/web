@@ -38,7 +38,7 @@ function Night({ time }: { time: Date }) {
   return (
     <div
       className={clsx(
-        "relative flex items-center justify-center overflow-hidden rounded-2xl",
+        "relative flex items-center justify-center overflow-hidden rounded-2xl text-center",
         "bg-sky-900 text-white"
       )}
     >
@@ -64,7 +64,7 @@ function Night({ time }: { time: Date }) {
             "text-glow-sky-900 dark:text-glow-sky-500"
           )}
         >
-          in the uk
+          in oceanside
         </p>
       </div>
     </div>
