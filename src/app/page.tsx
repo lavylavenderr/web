@@ -62,7 +62,7 @@ export default function Home() {
             }[lanyard.status?.discord_status ?? "offline"]
           )}
         >
-          <div className="h-full space-y-2 mt-9 md:-rotate-6">
+          <div className="h-full space-y-2 mt-9">
             <SiDiscord className="flex mx-auto w-24 h-24" />
             <h1 className="text-white text-lg font-semibold text-center">
               @lavylavender
