@@ -64,7 +64,7 @@ function Night({ time }: { time: Date }) {
             "text-glow-sky-900 dark:text-glow-sky-500"
           )}
         >
-          in oceanside
+          in vancouver
         </p>
       </div>
     </div>
@@ -87,7 +87,7 @@ function Day({ time }: { time: Date }) {
                 "text-white text-glow-sky-900 dark:text-glow-sky-500"
               )}
             >
-              in oceanside
+              in vancouver
             </p>
           </div>
         </div>

@@ -53,7 +53,7 @@ export default function Home() {
         <Link
           href={`https://discord.com/users/${discordId}`}
           className={cn(
-            "col-span-6 h-52 dark:shadow-none hover:rotate-2 dark:backdrop-blur-2xl md:col-span-2 rounded-2xl hover:scale-95 transition-all",
+            "col-span-6 h-52 dark:shadow-none hover:rotate-2 dark:backdrop-blur-2xl md:col-span-2 rounded-2xl transition-all",
             {
               online: "md:text-glow-white bg-green-600",
               idle: "bg-orange-400 text-glow-orange-50",
@@ -77,14 +77,17 @@ export default function Home() {
               : spotifyProfileLink
           }
           target="_blank"
-          className="col-span-6 h-52 hover:rotate-2 dark:shadow-none dark:backdrop-blur-2xl md:col-span-3 rounded-2xl hover:scale-95 transition-all cursor-pointer"
+          className="col-span-6 h-52 hover:rotate-2 dark:shadow-none dark:backdrop-blur-2xl md:col-span-3 rounded-2xl transition-all cursor-pointer"
         >
           <span
             aria-hidden
             className="pointer-events-none absolute inset-0 -z-20"
           >
             <img
-              src={lanyard.status?.spotify?.album_art_url ?? "/bus.jpg"}
+              src={
+                lanyard.status?.spotify?.album_art_url ??
+                "https://i.imgur.com/std5Fql.png"
+              }
               alt="Album art for now playing song"
               className="absolute inset-0 h-full w-full object-cover object-center invert dark:brightness-[0.7] dark:invert-0 rounded-2xl"
             />
@@ -107,16 +110,16 @@ export default function Home() {
           </span>
         </Link>
         <Link
-          href="https://whimsyfoxphotography.com"
+          href="https://spacehey.com/lavyalexander"
           target="_blank"
-          className="col-span-6 h-52 hover:rotate-2 dark:shadow-none dark:backdrop-blur-2xl md:col-span-4 rounded-2xl hover:scale-95 transition-all cursor-pointer"
+          className="col-span-6 h-52 hover:rotate-2 dark:shadow-none dark:backdrop-blur-2xl md:col-span-4 rounded-2xl transition-all cursor-pointer"
         >
           <span
             aria-hidden
             className="pointer-events-none absolute inset-0 -z-20"
           >
             <img
-              src={"/photo1.jpg"}
+              src={"https://i.imgur.com/LQWmjBO.jpeg"}
               alt="Photo for photography card"
               className="absolute inset-0 h-full w-full object-cover object-center invert dark:brightness-[0.7] dark:invert-0 rounded-2xl"
             />
@@ -130,9 +133,7 @@ export default function Home() {
 
           <span className="absolute bottom-5 left-5 md:text-glow-white">
             <div className="flex">
-              <h1 className="font-semibold text-lg">
-                Check out my photography portfolio!
-              </h1>{" "}
+              <h1 className="font-semibold text-lg">Say hello on SpaceHey!</h1>{" "}
               <FiArrowUpRight className="mt-[6px] hidden md:block" size={18} />
             </div>
           </span>
@@ -159,16 +160,18 @@ export default function Home() {
           </div>
         </div>
         <div className="col-span-6 h-full hover:rotate-2 transition-all dark:shadow-none dark:backdrop-blur-2xl md:col-span-2 rounded-2xl">
-          <span
-            aria-hidden
-            className="pointer-events-none absolute inset-0 -z-20"
-          >
-            <img
-              src={"/twotime.png"}
-              alt="Meme"
-              className="absolute inset-0 h-full w-full object-cover object-center  rounded-2xl"
-            />
-          </span>
+          <a href="https://www.roblox.com/games/696347899/Stepford-County-Railway">
+            <span
+              aria-hidden
+              className="absolute inset-0 -z-20"
+            >
+              <img
+                src={"https://i.imgur.com/yPYSC6i.png"}
+                alt="SCR Logo"
+                className="absolute inset-0 h-full w-full object-cover object-center  rounded-2xl"
+              />
+            </span>
+          </a>
         </div>
 
         <div className="h-auto col-span-6 space-y-2 rounded-2xl bg-purple-900/20 p-6 backdrop-blur-2xl md:col-span-4">
@@ -179,8 +182,14 @@ export default function Home() {
             14! My first ever Discord.JS bot, yikes that was a disaster. A few
             fun facts about me is and I also love to read (I'm currently reading
             Warrior Cats!), shoot photos and I write stories from time to time!
-            Besides that, you can usually catch me hanging around my usual
-            friend group.
+            Besides that, you can usually catch me playing{" "}
+            <a
+              className="text-blue-500"
+              href="https://www.roblox.com/games/696347899/Stepford-County-Railway"
+            >
+              Stepford Country Railway
+            </a>{" "}
+            on Roblox! It is indeed quite addicting..
           </p>
         </div>
         <div className="col-span-6 border-gray-500 bg-gray-500/20 backdrop-blur-2xl rounded-2xl space-y-1 p-6">
