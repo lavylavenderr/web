@@ -1,7 +1,11 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { CaliforniaTimeFormatter, daysUntilBirthday, dob } from "@/lib/constants";
+import {
+  CaliforniaTimeFormatter,
+  daysUntilBirthday,
+  dob,
+} from "@/lib/constants";
 
 function Night({ time }: { time: Date }) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -130,7 +134,9 @@ function Day({ time }: { time: Date }) {
 
 export function Time() {
   const [time, setTime] = useState(() => new Date());
-  const dayCount = daysUntilBirthday()
+  const dayCount = daysUntilBirthday();
+  const isBirthday = (() =>
+    new Date().toISOString().slice(5, 10) === dob.toISOString().slice(5, 10))();
   const isNight = time.getHours() >= 17 || time.getHours() < 6;
 
   useEffect(() => {
@@ -146,13 +152,23 @@ export function Time() {
       {isNight ? <Night time={time} /> : <Day time={time} />}
 
       <div className="flex items-center h-24 md:h-auto justify-center rounded-2xl bg-indigo-100 text-indigo-500 dark:bg-[#23224c] dark:text-indigo-400 p-3 md:p-0">
-        <div className="text-center">
-          <p className="text-xs">
-            <span className="text-xl">{dayCount}</span> days
-            <br />
-            until birthday
-          </p>
-        </div>
+        {!isBirthday ? (
+          <div className="text-center">
+            <p className="text-xs">
+              <span className="text-xl">{dayCount == 0 ? "1" : dayCount}</span> day(s)
+              <br />
+              until birthday
+            </p>
+          </div>
+        ) : (
+          <div className="text-center p-2">
+            <p className="text-xs">
+              <span className="text-2xl">🎉</span>
+              <br />
+              it's their birthday!
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

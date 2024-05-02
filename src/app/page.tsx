@@ -40,9 +40,14 @@ export default function Home() {
             <h1 className="text-lg font-semibold tracking-wide text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50">
               Hi there! My name is
             </h1>
+            <div className="flex flex-row gap-2">
             <h1 className="text-4xl font-bold tracking-tighter text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50 pb-3">
               Lavender
             </h1>
+            <h1 className="text-xl font-bold hidden md:block tracking-tighter text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50 pt-3">
+              ...or Alexander
+            </h1>
+            </div>
             <h1 className="text-sm md:text-md font-semibold tracking-wide text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50">
               I'm a Canadian furry exploring the interwebs with an interest in
               silly little proejcts from time to time! I'm also a full-stack
@@ -159,22 +164,7 @@ export default function Home() {
             <SiRust size={24} />
           </div>
         </div>
-        <div className="col-span-6 h-full hover:rotate-2 transition-all dark:shadow-none dark:backdrop-blur-2xl md:col-span-2 rounded-2xl">
-          <a href="https://www.roblox.com/games/696347899/Stepford-County-Railway">
-            <span
-              aria-hidden
-              className="absolute inset-0 -z-20"
-            >
-              <img
-                src={"https://i.imgur.com/yPYSC6i.png"}
-                alt="SCR Logo"
-                className="absolute inset-0 h-full w-full object-cover object-center  rounded-2xl"
-              />
-            </span>
-          </a>
-        </div>
-
-        <div className="h-auto col-span-6 space-y-2 rounded-2xl bg-purple-900/20 p-6 backdrop-blur-2xl md:col-span-4">
+        <div className="h-auto col-span-6 space-y-2 rounded-2xl bg-purple-900/20 p-6 backdrop-blur-2xl md:col-span-6">
           <h2 className="font-semibold md:text-glow-white">About Me 🦊</h2>
 
           <p>
@@ -187,14 +177,19 @@ export default function Home() {
               className="text-blue-500"
               href="https://www.roblox.com/games/696347899/Stepford-County-Railway"
             >
-              Stepford Country Railway
+              Stepford County Railway
             </a>{" "}
-            on Roblox! It is indeed quite addicting..
+            or{" "}<a
+              className="text-blue-500"
+              href="https://www.roblox.com/games/10082031223/British-Railway"
+            >
+              British Railway
+            </a>{" "} on Roblox! It is indeed quite addicting..
           </p>
         </div>
         <div className="col-span-6 border-gray-500 bg-gray-500/20 backdrop-blur-2xl rounded-2xl space-y-1 p-6">
           <h1 className="font-semibold md:text-glow-white">
-            all my projects - present and past
+            what do i do/have done? - present and past
           </h1>
           <div className="space-y-2 pt-2">
             <Link
@@ -208,14 +203,13 @@ export default function Home() {
               </p>
             </Link>
             <Link
-              href="https://fsphotos.cc"
+              href="https://www.roblox.com/groups/1156950/LeMonde-Airlines#!/about"
               className="-mx-6 block px-6 py-2 hover:bg-gray-600/10 transition-all text-white"
             >
-              <h2>FSPhotos</h2>
+              <h2>LeMonde Airlines</h2>
               <p className="line-clamp-2">
                 {" "}
-                A platform to view and share flight simulation photos with
-                fellow enthusiasts.
+                A thriving airline in the ro-aviation community.
               </p>
             </Link>
             <Link
