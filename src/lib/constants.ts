@@ -16,7 +16,7 @@ export const RelativeTimeFormatter = new Intl.RelativeTimeFormat("en", {
 });
 
 // temp fix: i have to offset it by a day for it to work, my birthday is really May 7th :)
-export const dob = new Date("2004-05-08");
+export const dob = new Date("2004-05-07");
 export const age = differenceInYears(new Date(), dob);
 export const hasHadBirthdayThisYear =
   new Date().getMonth() >= dob.getMonth() &&
