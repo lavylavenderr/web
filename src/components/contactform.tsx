@@ -65,7 +65,7 @@ export function ContactForm() {
             name="email"
             id="email"
             required
-            placeholder="me@dwagon.gay"
+            placeholder="DMUClass158@gmail.com"
             className="w-full"
           />
         </label>
@@ -77,7 +77,7 @@ export function ContactForm() {
             rows={5}
             minLength={10}
             required
-            placeholder="This is where you put your actual message, don't forget it!"
+            placeholder="This is where you put your actual message, don't forget it! Also, did you know I like trains :O"
             className="w-full resize-y"
           />
         </label>

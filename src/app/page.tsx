@@ -41,16 +41,13 @@ export default function Home() {
               Hi there! My name is
             </h1>
             <div className="flex flex-row gap-2">
-            <h1 className="text-4xl font-bold tracking-tighter text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50 pb-3">
-              Lavender
-            </h1>
-            <h1 className="text-xl font-bold hidden md:block tracking-tighter text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50 pt-3">
-              ...or Alexander
-            </h1>
+              <h1 className="text-4xl font-bold tracking-tighter text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50 pb-3">
+                Lavender
+              </h1>
             </div>
             <h1 className="text-sm md:text-md font-semibold tracking-wide text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50">
               I'm a Canadian furry exploring the interwebs with an interest in
-              silly little proejcts from time to time! I'm also a full-stack
+              silly little projects from time to time! I'm also a full-stack
               engineer specializing in TypeScript and Rust.
             </h1>
           </div>
@@ -179,12 +176,14 @@ export default function Home() {
             >
               Stepford County Railway
             </a>{" "}
-            or{" "}<a
+            or{" "}
+            <a
               className="text-blue-500"
               href="https://www.roblox.com/games/10082031223/British-Railway"
             >
               British Railway
-            </a>{" "} on Roblox! It is indeed quite addicting..
+            </a>{" "}
+            on Roblox! It is indeed quite addicting..
           </p>
         </div>
         <div className="col-span-6 border-gray-500 bg-gray-500/20 backdrop-blur-2xl rounded-2xl space-y-1 p-6">
@@ -210,6 +209,16 @@ export default function Home() {
               <p className="line-clamp-2">
                 {" "}
                 A thriving airline in the ro-aviation community.
+              </p>
+            </Link>
+            <Link
+              href="https://skyrden.com"
+              className="-mx-6 block px-6 py-2 hover:bg-gray-600/10 transition-all text-white"
+            >
+              <h2>Skyrden</h2>
+              <p className="line-clamp-2">
+                {" "}
+                Another thriving airline in the ro-aviation community.
               </p>
             </Link>
             <Link

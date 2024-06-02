@@ -55,7 +55,7 @@ function Night({ time }: { time: Date }) {
       <div className="z-10 text-center">
         <h2
           className={clsx(
-            "text-2xl font-light text-glow-sky-900 dark:text-glow-sky-500"
+            "text-2xl font-semibold text-glow-sky-900 dark:text-glow-sky-500"
           )}
           suppressHydrationWarning
         >
@@ -81,7 +81,7 @@ function Day({ time }: { time: Date }) {
       <div className="flex w-full items-center justify-center">
         <div className="opacity-85 flex items-baseline space-x-1 md:space-x-2">
           <div className="flex flex-col">
-            <h2 className="text-2xl font-light text-white">
+            <h2 className="text-2xl font-semibold text-white">
               {CaliforniaTimeFormatter.format(time)}
             </h2>
 
@@ -155,7 +155,7 @@ export function Time() {
         {!isBirthday ? (
           <div className="text-center">
             <p className="text-xs">
-              <span className="text-xl">{dayCount == 0 ? "1" : dayCount}</span> day(s)
+              <span className="text-xl font-bold">{dayCount == 0 ? "1" : dayCount}</span> day(s)
               <br />
               until birthday
             </p>
