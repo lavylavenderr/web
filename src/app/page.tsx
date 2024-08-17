@@ -208,7 +208,17 @@ export default function Home() {
               <h2>LeMonde Airlines</h2>
               <p className="line-clamp-2">
                 {" "}
-                A thriving airline in the ro-aviation community.
+                A no-so thriving airline in the ro-aviation community.
+              </p>
+            </Link>
+            <Link
+              href="https://flyflure.com"
+              className="-mx-6 block px-6 py-2 hover:bg-gray-600/10 transition-all text-white"
+            >
+              <h2>Flure</h2>
+              <p className="line-clamp-2">
+                {" "}
+                Flure! They've got it all.
               </p>
             </Link>
             <Link
