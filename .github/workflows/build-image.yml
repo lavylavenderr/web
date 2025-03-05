@@ -24,7 +24,7 @@ jobs:
       - name: Set Docker Tag
         id: date
         run: |
-          DATESTAMP=$(date + %s)
+          DATESTAMP=$(date +%s)
           echo "::set-output name=datestamp::$DATESTAMP"
 
       - name: Build and push Docker images
