@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { env } from "@/lib/env";
 
 type ContactData = {
   email: string;
@@ -17,7 +16,7 @@ export async function POST(request: Request) {
         { status: 400 }
       );
 
-    const result = await fetch(env.DISCORD_WEBHOOK, {
+    const result = await fetch(process.env.DISCORD_WEBHOOK!, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
