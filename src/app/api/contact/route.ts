@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
     try {
-        const rawBody = await request.json();
-        const body = JSON.parse(rawBody) as {
+        const body = (await request.json()) as {
             body: string;
             email: string;
             "cf-turnstile-response": string;
