@@ -13,6 +13,8 @@ services:
       traefik.http.routers.website.tls: "true"
       traefik.http.routers.website.tls.certresolver: "letsencrypt"
       traefik.http.services.website.loadbalancer.server.port: "9110"
+    environment:
+      - PORT=9110
     restart: unless-stopped
     networks:
       - traefik-net
