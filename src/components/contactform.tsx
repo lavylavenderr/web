@@ -8,9 +8,9 @@ export function ContactForm() {
   if (submitted) {
     return (
       <div>
-        <h2 className="font-semibold text-lg">Sent! 📫</h2>
+        <h2 className="font-semibold text-lg">i've got it!</h2>
         <p className="text-white/80">
-          I'll respond as soon as possible, thanks again!
+          thanks for leaving a message, i'll get back to you as soon as possible.
         </p>
       </div>
     );
@@ -19,11 +19,11 @@ export function ContactForm() {
   return (
     <>
       <div className="space-y-1">
-        <h2 className="font-semibold md:text-glow-white">
-          Need to contact me? 📱
+        <h2 className="font-semibold md:text-glow-white/65">
+          need to get in contact with me?
         </h2>
         <p className="text-white/75">
-          Send me a message below with the ✨ tea ✨ and I'll get back to you!
+          send me a message below with the ✨ tea ✨ and i'll get back to you!
         </p>
       </div>
 
@@ -88,7 +88,7 @@ export function ContactForm() {
         {/* cloudflare turnstile stuff to prevent bots */}
         <div
           className="cf-turnstile"
-          data-sitekey="0x4AAAAAABkL2GB1VFWceXYH"
+          data-sitekey={process.env.NEXT_CF_TURNSTILE_SITEKEY}
         ></div>
 
         <button

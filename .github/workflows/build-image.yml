@@ -34,3 +34,5 @@ jobs:
           tags: |
             ${{ env.IMAGE_NAME }}:custom-${{ steps.date.outputs.datestamp }}
             ${{ env.IMAGE_NAME }}:latest
+          env: |
+            NEXT_CF_TURNSTILE_SITEKEY=${{ secrets.CF_TURNSTILE_SITEKEY }}

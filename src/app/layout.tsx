@@ -8,32 +8,41 @@ import { Toaster } from "react-hot-toast";
 import Script from "next/script";
 
 const primary = font({
-  src: "../fonts/roobert-variable.woff2",
+    src: "../fonts/roobert-variable.woff2",
 });
 
 const primaryFont = Plus_Jakarta_Sans({
-  subsets: ["latin"],
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Lavender",
-  description: "woa welcome to my world wide website :3",
+    title: "Lavender",
+    description: "woa welcome to my world wide website :3",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
-      <body className="bg-grid-neutral-200/40 bg-neutral-100 text-neutral-900 antialiased dark:bg-grid-neutral-800/50 dark:bg-neutral-900 dark:text-neutral-100 min-h-full">
-        <div className={cn(primaryFont.className, "pb-8")}>
-          <div>{children}</div>
-          <Toaster />
-        </div>
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en">
+            <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
+            <body
+    className="bg-neutral-100 text-neutral-900 antialiased dark:bg-neutral-900 dark:text-neutral-100 min-h-full"
+    style={{
+        backgroundImage: `url('/background.svg')`,
+        backgroundRepeat: "repeat", // Repeats the background
+        backgroundSize: "auto",     // Uses natural image size (or adjust as needed)
+        backgroundPosition: "top left", // Start from top-left
+    }}
+>
+
+                <div className={cn(primaryFont.className, "pb-8")}>
+                    <div>{children}</div>
+                    <Toaster />
+                </div>
+            </body>
+        </html>
+    );
 }
