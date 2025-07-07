@@ -88,7 +88,7 @@ export function ContactForm() {
         {/* cloudflare turnstile stuff to prevent bots */}
         <div
           className="cf-turnstile"
-          data-sitekey={process.env.NEXT_PUBLIC_CF_TURNSTILE_SITEKEY}
+          data-sitekey="0x4AAAAAABkL2GB1VFWceXYH"
         ></div>
 
         <button
