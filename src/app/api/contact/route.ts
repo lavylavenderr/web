@@ -1,3 +1,4 @@
+import DiscordWebhook from "discord-webhook-ts";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -7,10 +8,10 @@ export async function POST(request: Request) {
             email: string;
             "cf-turnstile-response": string;
         };
-        const getClientIp = (request: Request): string | null =>
+        const getClientIp = (request: Request): string | undefined =>
             request.headers.get("X-Real-IP") ||
             request.headers.get("X-Forwarded-For")?.split(",")[0].trim() ||
-            null;
+            undefined;
 
         // CLOUDFLARE TURNSTILE CHECK START
 
@@ -45,33 +46,34 @@ export async function POST(request: Request) {
                 { status: 403 }
             );
 
-        const result = await fetch(process.env.DISCORD_WEBHOOK!, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                content: "contact form submission",
-                embeds: [
-                    {
-                        description: body,
-                        author: { name: body.email },
-                        fields: [
-                            {
-                                name: "ip",
-                                value: getClientIp(request) ?? "unknown!?",
-                            },
-                        ],
-                    },
-                ],
-            }),
-        });
+        const discordWebhookClient = new DiscordWebhook(
+            process.env.DISCORD_WEBHOOK!
+        );
+        const webhookReqBody = {
+            embeds: [
+                {
+                    title: "Contact Form Submission",
+                    color: 0x5865f2,
+                    fields: [
+                        {
+                            name: "Email",
+                            value: body.email,
+                        },
+                        {
+                            name: "Message",
+                            value: body.email,
+                        },
+                        {
+                            name: "IP Address",
+                            value: getClientIp(request) ?? "unknown!?",
+                        },
+                    ],
+                    timestamp: new Date().toISOString(),
+                },
+            ],
+        };
 
-        console.log(result.status)
-
-        if (result.status !== 204)
-            return NextResponse.json(
-                { message: "Error occured sending webhook", success: false },
-                { status: 400 }
-            );
+        await discordWebhookClient.execute(webhookReqBody);
 
         return NextResponse.json(
             { message: "OK", success: true },
