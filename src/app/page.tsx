@@ -35,7 +35,7 @@ export default function Home() {
     return (
         <div className="space-y-6">
             <div className="mx-auto grid max-w-3xl grid-cols-6 gap-6 px-6 pt-16 select-none">
-                <div className="col-span-6 flex h-64 md:h-48 flex-col justify-between overflow-hidden rounded-2xl p-4 pt-5 md:pt-4 md:px-8 md:py-5 bg-purple-200 dark:border-purple-500 dark:bg-purple-500/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-6">
+                <div className="col-span-6 flex h-64 md:h-48 flex-col justify-between overflow-hidden rounded-2xl p-4 pt-5 md:px-8 md:py-5 bg-purple-200 dark:border-purple-500 dark:bg-purple-500/20 dark:shadow-none dark:backdrop-blur-2xl md:col-span-6">
                     <div className="space-y-1 ml-2 md:ml-0 md:p-2">
                         <h1 className="text-lg font-semibold tracking-wide text-purple-900 dark:text-purple-300 dark:text-glow-purple-500/50">
                             hi there!
