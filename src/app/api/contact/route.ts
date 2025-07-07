@@ -65,6 +65,8 @@ export async function POST(request: Request) {
             }),
         });
 
+        console.log(result.status)
+
         if (result.status !== 204)
             return NextResponse.json(
                 { message: "Error occured sending webhook", success: false },
