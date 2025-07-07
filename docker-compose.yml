@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  website:
+    image: ghcr.io/lavylavender/api.lavylavender.com:latest
+    container_name: website
+    ports:
+      - "9110" 
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.website.rule: "Host(`lavylavender.com`)"
+      traefik.http.routers.website.entrypoints: "https"
+      traefik.http.routers.website.tls: "true"
+      traefik.http.routers.website.tls.certresolver: "letsencrypt"
+      traefik.http.services.website.loadbalancer.server.port: "9110"
+    restart: unless-stopped
+    networks:
+      - traefik-net
+
+  wellknown:
+    image: nginx:alpine
+    container_name: wellknown
+    volumes:
+      - ./src/wellknown:/usr/share/nginx/html/.well-known:ro
+    labels:
+      traefik.enable: "true"
+      traefik.http.routers.wellknown.rule: "Host(`kitty.lvndrr.ca`)"
+      traefik.http.routers.wellknown.entrypoints: "https"
+      traefik.http.routers.wellknown.tls: "true"
+      traefik.http.routers.wellknown.tls.certresolver: "letsencrypt"
+      traefik.http.services.wellknown.loadbalancer.server.port: "80"
+    restart: unless-stopped
+    networks:
+      - traefik-net
+
+networks:
+  traefik-net:
+    external: true

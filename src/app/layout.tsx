@@ -3,16 +3,17 @@ import "../styles/globals.css";
 
 import type { Metadata } from "next";
 import font from "next/font/local";
-import { Plus_Jakarta_Sans } from "next/font/google"
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { Toaster } from "react-hot-toast";
+import Script from "next/script";
 
 const primary = font({
   src: "../fonts/roobert-variable.woff2",
 });
 
 const primaryFont = Plus_Jakarta_Sans({
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Lavender",
@@ -26,6 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js" />
       <body className="bg-grid-neutral-200/40 bg-neutral-100 text-neutral-900 antialiased dark:bg-grid-neutral-800/50 dark:bg-neutral-900 dark:text-neutral-100 min-h-full">
         <div className={cn(primaryFont.className, "pb-8")}>
           <div>{children}</div>

@@ -1,19 +1,49 @@
 import { NextResponse } from "next/server";
 
-type ContactData = {
-  email: string;
-  body: string;
-};
-
 export async function POST(request: Request) {
   try {
-    const { email, body } = (await request.json()) as ContactData;
-    const userIp = request.headers.get("x-forwarded-for") as string;
+    const rawBody = await request.json();
+    const body = JSON.parse(rawBody) as {
+      body: string;
+      email: string;
+      "cf-turnstile-response": string;
+    };
+    const getClientIp = (request: Request): string | null =>
+      request.headers.get("X-Real-IP") ||
+      request.headers.get("X-Forwarded-For")?.split(",")[0].trim() ||
+      null;
 
-    if (!email || !body)
+    // CLOUDFLARE TURNSTILE CHECK START
+
+    const cloudflareValidation = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        body: JSON.stringify({
+          secret: process.env.CF_TURNSTILE_SECRET,
+          response: body["cf-turnstile-response"],
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      }
+    );
+    const responseValidationBody = JSON.parse(
+      await cloudflareValidation.json()
+    ) as { success: boolean };
+
+    if (!responseValidationBody.success)
+      return NextResponse.json(
+        { message: "Security check failed", success: false },
+        { status: 400 }
+      );
+
+    // CLOUDFLARE VALIDATION END
+
+    if (!body.email || !body["cf-turnstile-response"] || !body)
       return NextResponse.json(
         { message: "Invalid request", success: false },
-        { status: 400 }
+        { status: 403 }
       );
 
     const result = await fetch(process.env.DISCORD_WEBHOOK!, {
@@ -24,8 +54,10 @@ export async function POST(request: Request) {
         embeds: [
           {
             description: body,
-            author: { name: email },
-            fields: [{ name: "ip", value: userIp ?? "unknown!?" }],
+            author: { name: body.email },
+            fields: [
+              { name: "ip", value: getClientIp(request) ?? "unknown!?" },
+            ],
           },
         ],
       }),

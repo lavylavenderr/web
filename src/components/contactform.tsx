@@ -46,6 +46,9 @@ export function ContactForm() {
           if (response.status === 400 || response.status === 500) {
             setLoading(false);
             return toast.error("An error has occured D:", { duration: 8000 });
+          } else if (response.status === 403) {
+            setLoading(false)
+            return toast.error("Security check failed", { duration: 8000 })
           }
 
           setLoading(false);
@@ -81,6 +84,12 @@ export function ContactForm() {
             className="w-full resize-y"
           />
         </label>
+
+        {/* cloudflare turnstile stuff to prevent bots */}
+        <div
+          className="cf-turnstile"
+          data-sitekey={process.env.NEXT_PUBLIC_CF_TURNSTILE_SITEKEY}
+        ></div>
 
         <button
           disabled={loading}
