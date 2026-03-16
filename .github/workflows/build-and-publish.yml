@@ -23,8 +23,8 @@ jobs:
 
       - name: Tag Docker Image
         run: |
-          docker tag honeycomb ghcr.io/lavylavenderr/temporaryweb:latest
-          docker tag honeycomb ghcr.io/lavylavenderr/temporaryweb:${{ github.sha }}
+          docker tag temporaryweb ghcr.io/lavylavenderr/temporaryweb:latest
+          docker tag temporaryweb ghcr.io/lavylavenderr/temporaryweb:${{ github.sha }}
 
       - name: Push Docker Images
         run: |
