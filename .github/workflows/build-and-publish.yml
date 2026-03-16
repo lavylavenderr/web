@@ -1,4 +1,4 @@
-name: Publish to GitHub Packages
+name: Publish to GHCR
 
 on:
   push:
@@ -22,7 +22,11 @@ jobs:
         run: docker build -t temporaryweb .
 
       - name: Tag Docker Image
-        run: docker tag temporaryweb ghcr.io/lavylavenderr/temporaryweb:latest
+        run: |
+          docker tag honeycomb ghcr.io/lavylavenderr/temporaryweb:latest
+          docker tag honeycomb ghcr.io/lavylavenderr/temporaryweb:${{ github.sha }}
 
-      - name: Push Docker Image
-        run: docker push ghcr.io/lavylavenderr/temporaryweb:latest
+      - name: Push Docker Images
+        run: |
+          docker push ghcr.io/lavylavenderr/temporaryweb:latest
+          docker push ghcr.io/lavylavenderr/temporaryweb:${{ github.sha }}
